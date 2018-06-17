@@ -61,7 +61,7 @@ class ref_graph: graph<T> {
     struct matrix_node<T> get_cost(std::size_t from,std::size_t to){
       try {
         return {_nodes[from][to],true};
-      } catch (std::out_of_range) {
+      } catch (std::out_of_range&) {
         return {T(),false};
       }
     }
