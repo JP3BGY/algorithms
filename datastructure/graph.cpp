@@ -4,17 +4,14 @@
 #include <deque>
 #include <array>
 #include <bitset>
-template<typename T> 
-struct matrix_node{
-  T cost;
-  bool isConnected;
-};
 template<class T>
 class graph{
 public:
   virtual void add_vector(std::size_t ,std::size_t ,T )=0;
   virtual void del_vector(std::size_t ,std::size_t ,T )=0;
-  virtual matrix_node<T> get_cost(std::size_t ,std::size_t )=0;
+  virtual std::tuple<bool,T> get_cost(std::size_t ,std::size_t )=0;
+  virtual std::vector<std::tuple<T,std::size_t> > get_next(std::size_t)=0;
+  virtual std::size_t size()=0;
 };
 template<class T> 
 class matrix_graph :graph<T>{
@@ -37,10 +34,18 @@ public:
     void del_vector(std::size_t from,std::size_t to){
       _is_connected[from*N+to]=false;
     }
-    struct matrix_node<T> get_cost(std::size_t from,std::size_t to){
+    std::tuple<bool,T> get_cost(std::size_t from,std::size_t to){
       if(_is_connected[from*N+to])return {_matrix[from][to],true};
-      else return {_matrix[from][to],false};
+      else return {false,_matrix[from][to]};
     }
+    std::vector<std::tuple<T,std::size_t> > get_next(std::size_t from){
+      std::vector<std::tuple<T,std::size_t> > ret;
+      for (std::size_t i = 0; i < N; i++) {
+        if(_is_connected[from*N+i])ret.push_back({_matrix[from][i],i});
+      }
+      return ret;
+    }
+    std::size_t size(){return N;}
 };
 
 template<class T> 
@@ -58,11 +63,19 @@ class ref_graph: graph<T> {
     void del_vector(std::size_t from,std::size_t to){
       _nodes[from].erase(to);
     }
-    struct matrix_node<T> get_cost(std::size_t from,std::size_t to){
+    std::tuple<bool,T> get_cost(std::size_t from,std::size_t to){
       try {
-        return {_nodes[from][to],true};
+        return {true,_nodes[from][to]};
       } catch (std::out_of_range&) {
-        return {T(),false};
+        return {false,T()};
       }
     }
+    std::vector<std::tuple<T,std::size_t> > get_next(std::size_t from){
+      std::vector<std::tuple<T,std::size_t> > ret;
+      for(auto i=_nodes[from].begin();i!=_nodes[from].end();++i){
+        ret.push_back({i->second,i->first});
+      }
+      return ret;
+    }
+    std::size_t size(){return _nodes.size();}
 };
