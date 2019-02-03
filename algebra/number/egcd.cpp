@@ -1,3 +1,7 @@
+#ifndef EGCD
+#define EGCD
+#include<bits/stdc++.h>
+using namespace std;
 template<typename T> 
 int sgn(T val){
   return (T(0)<val)-(val<T(0));
@@ -17,5 +21,5 @@ tuple<long long,long long,long long> egcd(long long a,long long b){
   }
   return std::make_tuple(a,p*sa,r*sb);
 }
-
+#endif
 

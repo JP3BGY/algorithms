@@ -1,3 +1,9 @@
+#ifndef COMBINATION
+#define COMBINATION
+#include<bits/stdc++.h>
+#include"egcd.cpp"
+#include"Modulo.cpp"
+using namespace std;
 long long factorial(long long a,long long m){
   long long ret=1;
   for (long long i = 1; i <= a; i++) {
@@ -41,3 +47,4 @@ long long combination_cached(long long n,long long r,long long m){
   r=min(r,n-r);
   return cache_cmb[r];
 }
+#endif
