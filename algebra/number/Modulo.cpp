@@ -63,7 +63,7 @@ public:
     return *this;
   }
   Modulo &operator = (const Modulo& b){
-    a=b;
+    a=b.a;
     return *this;
   }
   Modulo operator + (const Modulo<m> &b)const{
@@ -100,7 +100,7 @@ public:
 };
 
 template<long long m>
-Modulo<m> pow(Modulo<m> a,long long b){
+Modulo<m> modpow(Modulo<m> a,long long b){
   long long c;
   long long mod_pow=eulerPhi(m);
   if(b>64){

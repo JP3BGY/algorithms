@@ -51,11 +51,12 @@ public:
 template<class T> 
 class ref_graph: graph<T> {
   std::vector<std::map<std::size_t,T>> _nodes;
-  bool _is_sorted;
-  void _sort(){if(_is_sorted==false){sort(_nodes.begin(),_nodes.end());_is_sorted=true;}}
   public:
-    ref_graph(std::size_t n):_is_sorted(false){
+    ref_graph(std::size_t n):{
       _nodes.resize(n);
+    }
+    ref_graph(std::vector<std::map<std::size_t,T>> n):_nodes(n){
+      
     }
     void add_vector(std::size_t from,std::size_t to,T cost){
       _nodes[from][to]=cost;

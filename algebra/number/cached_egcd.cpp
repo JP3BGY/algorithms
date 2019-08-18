@@ -12,3 +12,6 @@ long long C(long long x,long long y){
     if (y<0||y>x) return 0;
     return cache_f[x]*cache_invf[y]%MOD*cache_invf[x-y]%MOD;
 }
+long long egcd(long long a){
+    return cache_invf[a]*cache_f[a-1]%MOD;
+}
