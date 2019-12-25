@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :warning: datastructure/SegmentTree.cpp
+# :heavy_check_mark: datastructure/SegmentTree.cpp
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#8dc87745f885a4cc532acd7b15b8b5fe">datastructure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/datastructure/SegmentTree.cpp">View this file on GitHub</a>
-    - Last commit date: 2019-12-25 09:41:24+09:00
+    - Last commit date: 2019-12-25 09:47:15+09:00
 
 
 
 
 ## Verified with
 
-* :warning: <a href="../../verify/test/datastructure/SegmentTree.test.cpp.html">test/datastructure/SegmentTree.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/datastructure/SegmentTree.test.cpp.html">test/datastructure/SegmentTree.test.cpp</a>
 
 
 ## Code
@@ -125,7 +125,7 @@ class segtree2d{
         tree.assign(n,vector<T>(m,unit));
         build(v);
     }
-    segtree2d(F f,T unit,size_t n_):segtree(f,unit,vector<T>(n_,unit)){
+    segtree2d(F f,T unit,size_t n_):segtree2d(f,unit,vector<T>(n_,unit)){
     }
     void build(const vector<vector<T>> &v){
         for(size_t i=0;i<v.size();++i)tree[n+i]=build_segtree(f,unit,v[i]);
@@ -253,7 +253,7 @@ class segtree2d{
         tree.assign(n,vector<T>(m,unit));
         build(v);
     }
-    segtree2d(F f,T unit,size_t n_):segtree(f,unit,vector<T>(n_,unit)){
+    segtree2d(F f,T unit,size_t n_):segtree2d(f,unit,vector<T>(n_,unit)){
     }
     void build(const vector<vector<T>> &v){
         for(size_t i=0;i<v.size();++i)tree[n+i]=build_segtree(f,unit,v[i]);

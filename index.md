@@ -59,7 +59,7 @@ layout: default
 
 ### datastructure
 
-* :warning: <a href="library/datastructure/SegmentTree.cpp.html">datastructure/SegmentTree.cpp</a>
+* :heavy_check_mark: <a href="library/datastructure/SegmentTree.cpp.html">datastructure/SegmentTree.cpp</a>
 * :warning: <a href="library/datastructure/bit.cpp.html">datastructure/bit.cpp</a>
 * :warning: <a href="library/datastructure/graph.cpp.html">datastructure/graph.cpp</a>
 
@@ -83,6 +83,6 @@ layout: default
 
 ## Verify Files
 
-* :warning: <a href="verify/test/datastructure/SegmentTree.test.cpp.html">test/datastructure/SegmentTree.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/datastructure/SegmentTree.test.cpp.html">test/datastructure/SegmentTree.test.cpp</a>
 
 
