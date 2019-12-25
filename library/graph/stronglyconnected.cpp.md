@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#f8b0b924ebd7046dbfa85a856e4682c8">graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/graph/stronglyconnected.cpp">View this file on GitHub</a>
-    - Last commit date: 2019-08-18 11:19:23+09:00
+    - Last commit date: 2019-12-25 09:27:59+09:00
 
 
 
@@ -60,8 +60,7 @@ std::vector<std::vector<int>> graph;
 std::vector<bool> used;
 std::vector<int> order;
 std::vector<int> group;
-std::vector<std::vector<int>> t;
-std::vector<std::vector<int>> rev_graph(graph.size());
+std::vector<std::vector<int>> rev_graph;
 void dfs(int i){
     if(used[i]==true){
         return;
@@ -83,6 +82,7 @@ void rdfs(int idx,int g){
     
 }
 std::vector<std::vector<int>> strongly_connected(){
+    std::vector<std::vector<int>> t;
     used.resize(graph.size());
     fill(used.begin(),used.end(),false);
     group.resize(graph.size());
@@ -220,8 +220,7 @@ std::vector<std::vector<int>> graph;
 std::vector<bool> used;
 std::vector<int> order;
 std::vector<int> group;
-std::vector<std::vector<int>> t;
-std::vector<std::vector<int>> rev_graph(graph.size());
+std::vector<std::vector<int>> rev_graph;
 void dfs(int i){
     if(used[i]==true){
         return;
@@ -243,6 +242,7 @@ void rdfs(int idx,int g){
     
 }
 std::vector<std::vector<int>> strongly_connected(){
+    std::vector<std::vector<int>> t;
     used.resize(graph.size());
     fill(used.begin(),used.end(),false);
     group.resize(graph.size());

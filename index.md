@@ -81,3 +81,10 @@ layout: default
 * :warning: <a href="library/strings/SuffixAuto.cpp.html">strings/SuffixAuto.cpp</a>
 
 
+<div id="dd2863e470d2af8ee92181d6e8c27bbc"></div>
+
+### test/datastructure
+
+* :warning: <a href="library/test/datastructure/test-SegmentTree.cpp.html">test/datastructure/test-SegmentTree.cpp</a>
+
+
