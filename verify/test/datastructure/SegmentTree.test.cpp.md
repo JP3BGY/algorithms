@@ -30,9 +30,10 @@ layout: default
 <a href="../../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/datastructure/SegmentTree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2019-12-25 09:35:16+09:00
+    - Last commit date: 2019-12-25 09:37:42+09:00
 
 
+* see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/all/DSL_2_B">https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/all/DSL_2_B</a>
 
 
 ## Depends on
@@ -45,7 +46,7 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#define PROBLEM https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/all/DSL_2_B
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/all/DSL_2_B"
 #include "datastructure/SegmentTree.cpp"
 #include <bits/stdc++.h>
 using namespace std;
@@ -79,7 +80,7 @@ int main(int argc, char const *argv[])
 {% raw %}
 ```cpp
 #line 1 "test/datastructure/SegmentTree.test.cpp"
-#define PROBLEM https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/all/DSL_2_B
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/all/DSL_2_B"
 #line 1 "datastructure/SegmentTree.cpp"
 #include <bits/stdc++.h>
 using namespace std;
