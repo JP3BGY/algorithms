@@ -36,6 +36,11 @@ layout: default
 
 
 
+## Verified with
+
+* :warning: <a href="../../verify/test/datastructure/SegmentTree.test.cpp.html">test/datastructure/SegmentTree.test.cpp</a>
+
+
 ## Code
 
 <a id="unbundled"></a>
