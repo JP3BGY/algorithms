@@ -64,13 +64,6 @@ layout: default
 * :warning: <a href="library/datastructure/graph.cpp.html">datastructure/graph.cpp</a>
 
 
-<div id="dc353651dacf3fd969bc27be2431b98b"></div>
-
-### fuzzer
-
-* :warning: <a href="library/fuzzer/test.cpp.html">fuzzer/test.cpp</a>
-
-
 <div id="f8b0b924ebd7046dbfa85a856e4682c8"></div>
 
 ### graph
