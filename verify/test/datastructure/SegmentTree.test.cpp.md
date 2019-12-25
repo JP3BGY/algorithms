@@ -30,7 +30,7 @@ layout: default
 <a href="../../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/datastructure/SegmentTree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2019-12-25 09:37:42+09:00
+    - Last commit date: 2019-12-25 09:41:24+09:00
 
 
 * see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/all/DSL_2_B">https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/all/DSL_2_B</a>
@@ -153,7 +153,7 @@ class segtree2d{
     T unit;
     vector<vector<T>> tree;
     public:
-    segtree(F f,T unit,const vector<vector<T>> &v):f(f),unit(unit),tree(){
+    segtree2d(F f,T unit,const vector<vector<T>> &v):f(f),unit(unit),tree(){
         this->n=1;
         this->m=1;
         while(n<v.size())this->n<<=1;
@@ -161,7 +161,7 @@ class segtree2d{
         tree.assign(n,vector<T>(m,unit));
         build(v);
     }
-    segtree(F f,T unit,size_t n_):segtree(f,unit,vector<T>(n_,unit)){
+    segtree2d(F f,T unit,size_t n_):segtree(f,unit,vector<T>(n_,unit)){
     }
     void build(const vector<vector<T>> &v){
         for(size_t i=0;i<v.size();++i)tree[n+i]=build_segtree(f,unit,v[i]);
