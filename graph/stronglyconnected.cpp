@@ -17,8 +17,7 @@ std::vector<std::vector<int>> graph;
 std::vector<bool> used;
 std::vector<int> order;
 std::vector<int> group;
-std::vector<std::vector<int>> t;
-std::vector<std::vector<int>> rev_graph(graph.size());
+std::vector<std::vector<int>> rev_graph;
 void dfs(int i){
     if(used[i]==true){
         return;
@@ -40,6 +39,7 @@ void rdfs(int idx,int g){
     
 }
 std::vector<std::vector<int>> strongly_connected(){
+    std::vector<std::vector<int>> t;
     used.resize(graph.size());
     fill(used.begin(),used.end(),false);
     group.resize(graph.size());

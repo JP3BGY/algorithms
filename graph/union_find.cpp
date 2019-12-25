@@ -1,23 +1,25 @@
 #include<bits/stdc++.h>
 using namespace std;
 class UF{
-  vector<int> par,rank,size_uf;
+  vector<long> par,rank,size_uf;
+  long chunk_size;
 public:
-  UF(int size){
-    for (int i = 0; i < size; i++) {
+  UF(long size):chunk_size(size){
+    for (long i = 0; i < size; i++) {
       par.push_back(i);
       rank.push_back(0);
       size_uf.push_back(1);
     }
   }
-  int find(int x){
+  long find(long x){
     if(par[x]==x)return x;
     return par[x]=find(par[x]);
   }
-  void unite(int x,int y){
+  void unite(long x,long y){
     x=find(x);
     y=find(y);
     if(x==y)return;
+    --chunk_size;
     if(rank[x]<rank[y]){
       par[x]=y;
       size_uf[y]+=size_uf[x];
@@ -28,14 +30,17 @@ public:
       if(rank[x]==rank[y])rank[x]++;
     }
   }
-  bool same(int x,int y){
+  bool same(long x,long y){
     return find(x)==find(y);
   }
-  int operator [](int x){
+  long operator [](long x){
     return this->find(x);
   }
-  int size(int x){
+  long size(long x){
     x=find(x);
     return size_uf[x];
+  }
+  long chunk_size(){
+    return this->chunk_size;
   }
 };
