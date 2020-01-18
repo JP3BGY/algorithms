@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :warning: strings/SuffixAuto.cpp
+# :warning: array/invnum.cpp
 
 <a href="../../index.html">Back to top page</a>
 
-* category: <a href="../../index.html#8bcf6629759bd278a5c6266bd9c054f8">strings</a>
-* <a href="{{ site.github.repository_url }}/blob/master/strings/SuffixAuto.cpp">View this file on GitHub</a>
-    - Last commit date: 2019-08-18 11:19:23+09:00
+* category: <a href="../../index.html#f1f713c9e000f5d3f280adbd124df4f5">array</a>
+* <a href="{{ site.github.repository_url }}/blob/master/array/invnum.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-01-19 01:00:48+09:00
 
 
 
@@ -41,15 +41,41 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-
+#include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+template<class ITR>
+long long inv_num(ITR b,ITR e){
+    using T = typeof(*b);
+    ll ret=0;
+    __gnu_pbds::tree<T,null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update> s;
+    while(b!=e){
+        ret+=s.size()-s.order_of_key(*b);
+        ++b;
+    }
+    return ret;
+}
 ```
 {% endraw %}
 
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "strings/SuffixAuto.cpp"
-
+#line 1 "array/invnum.cpp"
+#include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+template<class ITR>
+long long inv_num(ITR b,ITR e){
+    using T = typeof(*b);
+    ll ret=0;
+    __gnu_pbds::tree<T,null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update> s;
+    while(b!=e){
+        ret+=s.size()-s.order_of_key(*b);
+        ++b;
+    }
+    return ret;
+}
 ```
 {% endraw %}
 

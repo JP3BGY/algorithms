@@ -55,6 +55,13 @@ layout: default
 * :warning: <a href="library/algebra/number/prime.cpp.html">algebra/number/prime.cpp</a>
 
 
+<div id="f1f713c9e000f5d3f280adbd124df4f5"></div>
+
+### array
+
+* :warning: <a href="library/array/invnum.cpp.html">array/invnum.cpp</a>
+
+
 <div id="8dc87745f885a4cc532acd7b15b8b5fe"></div>
 
 ### datastructure
@@ -72,13 +79,6 @@ layout: default
 * :warning: <a href="library/graph/dijkstra.cpp.html">graph/dijkstra.cpp</a>
 * :warning: <a href="library/graph/stronglyconnected.cpp.html">graph/stronglyconnected.cpp</a>
 * :warning: <a href="library/graph/union_find.cpp.html">graph/union_find.cpp</a>
-
-
-<div id="8bcf6629759bd278a5c6266bd9c054f8"></div>
-
-### strings
-
-* :warning: <a href="library/strings/SuffixAuto.cpp.html">strings/SuffixAuto.cpp</a>
 
 
 ## Verify Files
