@@ -72,7 +72,7 @@ std::vector<T,std::size_t> dijkstra_vec(graph<T> g,std::size_t from){
 ```cpp
 #line 1 "graph/dijkstra.cpp"
 #include <queue>
-#line 1 "graph/../datastructure/graph.cpp"
+#line 1 "datastructure/graph.cpp"
 #include <vector>
 #include <map>
 #include <tuple>

@@ -29,8 +29,9 @@ layout: default
 
 <a href="../../../index.html">Back to top page</a>
 
+* category: <a href="../../../index.html#dd2863e470d2af8ee92181d6e8c27bbc">test/datastructure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/datastructure/SegmentTree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2019-12-25 09:47:15+09:00
+    - Last commit date: 2020-03-22 00:38:02+09:00
 
 
 * see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/all/DSL_2_B">https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/all/DSL_2_B</a>
@@ -125,6 +126,9 @@ class segtree{
             tree[k]=f(tree[k*2],tree[k*2+1]);
         }
     }
+    T get_val(size_t k){
+        return this->query(k,k+1);
+    }
     void add_val(size_t k,T x){
         if(k>n){
             cerr<<"out of size"<<endl;
@@ -137,6 +141,13 @@ class segtree{
         }
     }
     T query(size_t a,size_t b){
+        //[a,b)
+        if(a>n){
+            a=n;
+        }
+        if(b>n){
+            b=n;
+        }
         T vl=unit,vr=unit;
         for(int l=a+n,r=b+n;l<r;l/=2,r/=2){
             if(l&1)vl=f(vl,tree[l++]);
@@ -202,8 +213,8 @@ class segtree2d{
         }
         return f(vl,vr);
     }
-};#line 3 "test/datastructure/SegmentTree.test.cpp"
-#include <bits/stdc++.h>
+};
+#line 4 "test/datastructure/SegmentTree.test.cpp"
 using namespace std;
 
 int main(int argc, char const *argv[])

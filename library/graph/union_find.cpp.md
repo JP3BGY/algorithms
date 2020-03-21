@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#f8b0b924ebd7046dbfa85a856e4682c8">graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/graph/union_find.cpp">View this file on GitHub</a>
-    - Last commit date: 2019-12-25 09:27:59+09:00
+    - Last commit date: 2020-03-22 00:38:02+09:00
 
 
 
@@ -45,9 +45,9 @@ layout: default
 using namespace std;
 class UF{
   vector<long> par,rank,size_uf;
-  long chunk_size;
+  long _chunk_size;
 public:
-  UF(long size):chunk_size(size){
+  UF(long size):_chunk_size(size){
     for (long i = 0; i < size; i++) {
       par.push_back(i);
       rank.push_back(0);
@@ -62,7 +62,7 @@ public:
     x=find(x);
     y=find(y);
     if(x==y)return;
-    --chunk_size;
+    --_chunk_size;
     if(rank[x]<rank[y]){
       par[x]=y;
       size_uf[y]+=size_uf[x];
@@ -84,7 +84,7 @@ public:
     return size_uf[x];
   }
   long chunk_size(){
-    return this->chunk_size;
+    return this->_chunk_size;
   }
 };
 
@@ -99,9 +99,9 @@ public:
 using namespace std;
 class UF{
   vector<long> par,rank,size_uf;
-  long chunk_size;
+  long _chunk_size;
 public:
-  UF(long size):chunk_size(size){
+  UF(long size):_chunk_size(size){
     for (long i = 0; i < size; i++) {
       par.push_back(i);
       rank.push_back(0);
@@ -116,7 +116,7 @@ public:
     x=find(x);
     y=find(y);
     if(x==y)return;
-    --chunk_size;
+    --_chunk_size;
     if(rank[x]<rank[y]){
       par[x]=y;
       size_uf[y]+=size_uf[x];
@@ -138,7 +138,7 @@ public:
     return size_uf[x];
   }
   long chunk_size(){
-    return this->chunk_size;
+    return this->_chunk_size;
   }
 };
 

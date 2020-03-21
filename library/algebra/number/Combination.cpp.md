@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#eff53351317ed5e83ba9ff9cfd3cdf3c">algebra/number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/algebra/number/Combination.cpp">View this file on GitHub</a>
-    - Last commit date: 2019-08-18 11:19:23+09:00
+    - Last commit date: 2020-03-22 00:38:39+09:00
 
 
 
@@ -101,6 +101,12 @@ long long combination_cached(long long n,long long r,long long m){
   r=min(r,n-r);
   return cache_fact[n]*cache_inv_fact[r]%m*cache_inv_fact[n-r]%m;
 }
+long long combination_mod_2(long long n,long long r){
+  return n==(r|n-r);
+}
+long long homogeneous(long long n,long long r,long long m){
+  return combination_prime(n+r-1,r,m);
+}
 #endif
 
 ```
@@ -116,7 +122,7 @@ long long combination_cached(long long n,long long r,long long m){
 #line 1 "algebra/number/egcd.cpp"
 
 
-#include<bits/stdc++.h>
+#line 4 "algebra/number/egcd.cpp"
 using namespace std;
 template<typename T> 
 int sgn(T val){
@@ -142,7 +148,6 @@ tuple<long long,long long,long long> egcd(long long a,long long b){
 #line 1 "algebra/number/Modulo.cpp"
 
 
-#include<bits/stdc++.h>
 #line 5 "algebra/number/Modulo.cpp"
 #define MAX_N 100000
 using namespace std;
@@ -316,6 +321,12 @@ long long combination_cached(long long n,long long r,long long m){
   }
   r=min(r,n-r);
   return cache_fact[n]*cache_inv_fact[r]%m*cache_inv_fact[n-r]%m;
+}
+long long combination_mod_2(long long n,long long r){
+  return n==(r|n-r);
+}
+long long homogeneous(long long n,long long r,long long m){
+  return combination_prime(n+r-1,r,m);
 }
 
 

@@ -193,7 +193,7 @@ Modulo<m> modpow(Modulo<m> a,long long b){
 #line 1 "algebra/number/egcd.cpp"
 
 
-#include<bits/stdc++.h>
+#line 4 "algebra/number/egcd.cpp"
 using namespace std;
 template<typename T> 
 int sgn(T val){

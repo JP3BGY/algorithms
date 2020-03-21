@@ -63,8 +63,7 @@ long long inv_num(ITR b,ITR e){
 ```cpp
 #line 1 "array/invnum.cpp"
 #include <bits/stdc++.h>
-#include <ext/pb_ds/assoc_container.hpp>
-#include <ext/pb_ds/tree_policy.hpp>
+#line 4 "array/invnum.cpp"
 template<class ITR>
 long long inv_num(ITR b,ITR e){
     using T = typeof(*b);
@@ -76,6 +75,7 @@ long long inv_num(ITR b,ITR e){
     }
     return ret;
 }
+
 ```
 {% endraw %}
 

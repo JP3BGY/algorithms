@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#8dc87745f885a4cc532acd7b15b8b5fe">datastructure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/datastructure/SegmentTree.cpp">View this file on GitHub</a>
-    - Last commit date: 2019-12-25 09:47:15+09:00
+    - Last commit date: 2020-03-22 00:38:02+09:00
 
 
 
@@ -89,6 +89,9 @@ class segtree{
             tree[k]=f(tree[k*2],tree[k*2+1]);
         }
     }
+    T get_val(size_t k){
+        return this->query(k,k+1);
+    }
     void add_val(size_t k,T x){
         if(k>n){
             cerr<<"out of size"<<endl;
@@ -101,6 +104,13 @@ class segtree{
         }
     }
     T query(size_t a,size_t b){
+        //[a,b)
+        if(a>n){
+            a=n;
+        }
+        if(b>n){
+            b=n;
+        }
         T vl=unit,vr=unit;
         for(int l=a+n,r=b+n;l<r;l/=2,r/=2){
             if(l&1)vl=f(vl,tree[l++]);
@@ -217,6 +227,9 @@ class segtree{
             tree[k]=f(tree[k*2],tree[k*2+1]);
         }
     }
+    T get_val(size_t k){
+        return this->query(k,k+1);
+    }
     void add_val(size_t k,T x){
         if(k>n){
             cerr<<"out of size"<<endl;
@@ -229,6 +242,13 @@ class segtree{
         }
     }
     T query(size_t a,size_t b){
+        //[a,b)
+        if(a>n){
+            a=n;
+        }
+        if(b>n){
+            b=n;
+        }
         T vl=unit,vr=unit;
         for(int l=a+n,r=b+n;l<r;l/=2,r/=2){
             if(l&1)vl=f(vl,tree[l++]);
@@ -295,6 +315,7 @@ class segtree2d{
         return f(vl,vr);
     }
 };
+
 ```
 {% endraw %}
 
