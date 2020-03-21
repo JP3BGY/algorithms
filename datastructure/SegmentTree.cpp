@@ -41,6 +41,9 @@ class segtree{
             tree[k]=f(tree[k*2],tree[k*2+1]);
         }
     }
+    T get_val(size_t k){
+        return this->query(k,k+1);
+    }
     void add_val(size_t k,T x){
         if(k>n){
             cerr<<"out of size"<<endl;
@@ -53,6 +56,13 @@ class segtree{
         }
     }
     T query(size_t a,size_t b){
+        //[a,b)
+        if(a>n){
+            a=n;
+        }
+        if(b>n){
+            b=n;
+        }
         T vl=unit,vr=unit;
         for(int l=a+n,r=b+n;l<r;l/=2,r/=2){
             if(l&1)vl=f(vl,tree[l++]);

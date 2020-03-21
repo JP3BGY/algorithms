@@ -2,9 +2,9 @@
 using namespace std;
 class UF{
   vector<long> par,rank,size_uf;
-  long chunk_size;
+  long _chunk_size;
 public:
-  UF(long size):chunk_size(size){
+  UF(long size):_chunk_size(size){
     for (long i = 0; i < size; i++) {
       par.push_back(i);
       rank.push_back(0);
@@ -19,7 +19,7 @@ public:
     x=find(x);
     y=find(y);
     if(x==y)return;
-    --chunk_size;
+    --_chunk_size;
     if(rank[x]<rank[y]){
       par[x]=y;
       size_uf[y]+=size_uf[x];
@@ -41,6 +41,6 @@ public:
     return size_uf[x];
   }
   long chunk_size(){
-    return this->chunk_size;
+    return this->_chunk_size;
   }
 };

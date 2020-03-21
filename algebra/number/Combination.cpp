@@ -52,4 +52,10 @@ long long combination_cached(long long n,long long r,long long m){
   r=min(r,n-r);
   return cache_fact[n]*cache_inv_fact[r]%m*cache_inv_fact[n-r]%m;
 }
+long long combination_mod_2(ll n,ll r){
+  return n==(r|n-r);
+}
+long long homogeneous(long long n,long long r,long long m){
+  return combination_prime(n+r-1,r,m);
+}
 #endif
