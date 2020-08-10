@@ -52,6 +52,9 @@ template<long long m>
 class Modulo{
   long long a;
 public:
+  Modulo(){
+    a=0;
+  }
   Modulo(const long long b){
     a=(b%m+m)%m;
   }
@@ -90,6 +93,38 @@ public:
   Modulo operator / (const long long b)const{
     return {(a*inverse(b%m,m))%m};
   }
+  Modulo operator += (const Modulo<m> &b){
+    this->a=(a+b.a)%m;
+    return {(a+b.a)%m};
+  }
+  Modulo operator -= (const Modulo<m> &b){
+    this->a=(a-b.a+m)%m;
+    return {(a-b.a+m)%m};
+  }
+  Modulo operator *= (const Modulo<m> &b){
+    this->a=(a*b.a)%m;
+    return {(a*b.a)%m};
+  }
+  Modulo operator /= (const Modulo<m> &b){
+    this->a=(a*inverse(b,m))%m;
+    return {(a*inverse(b,m))%m};
+  }
+  Modulo operator += (const long long b){
+    this->a=(a+b)%m;
+    return {(a+b)%m};
+  }
+  Modulo operator -= (const long long b){
+    this->a=((a-b)%m+m)%m;
+    return {((a-b)%m+m)%m};
+  }
+  Modulo operator *= (const long long b){
+    this->a=(a*b)%m;
+    return {(a*b)%m};
+  }
+  Modulo operator /= (const long long b){
+    this->a=(a*inverse(b%m,m))%m;
+    return {(a*inverse(b%m,m))%m};
+  }
   Modulo operator < (const Modulo<m> &b)const{
     return a<b.a;
   }
@@ -98,6 +133,11 @@ public:
   }
   operator long long() const{return a;}
 };
+template<long long m>
+std::ostream& operator<<(std::ostream& os,Modulo<m> a){
+  os<<(long long)(a);
+  return os;
+}
 
 template<long long m>
 Modulo<m> modpow(Modulo<m> a,long long b){

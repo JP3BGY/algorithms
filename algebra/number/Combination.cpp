@@ -34,6 +34,10 @@ long long cache_fact[max_cache],cache_inv_fact[max_cache];
 long long combination_cached(long long n,long long r,long long m){
   if(r<0||r>n)return 0;
   if(r==0||r==n)return 1;
+  if(n>m){
+    std::cerr<<"Combination Error: n is greater than m"<<std::endl;
+    exit(1);
+  }
   static bool cached=false;
   if(cached==false){
     cached=true;

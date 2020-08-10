@@ -1,6 +1,5 @@
-template<typename T>
-T modpow(T a,unsigned long long b,unsigned long long MOD){
-  T base=a,ans=T(1LL);
+long long modpow(long long a,unsigned long long b,unsigned long long MOD){
+  long long base=a,ans=(1LL);
   while(b){
     if(b&1){
       ans=ans*base%MOD;
@@ -9,4 +8,7 @@ T modpow(T a,unsigned long long b,unsigned long long MOD){
     b>>=1;
   }
   return ans;
+}
+long long invpow(long long a,unsigned long long MOD){
+  return modpow(a,MOD-2,MOD);
 }

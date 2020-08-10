@@ -12,3 +12,13 @@ std::vector<point> circle_cross(const circle &a,const circle &b){
     point diff = (b.p-a.p)/d;
     return std::vector<point> {a.p+diff*point(rc,rs),a.p+diff*point(rc,-rs)};
 }
+std::pair<long long,long long> direction(std::pair<long long,long long> x){
+  long long tmp=std::gcd(x.first,x.second);
+  x.first/=tmp;
+  x.second/=tmp;
+  if(x.first<0||(x.first==0&&x.second<0)){
+    x.first=-x.first;
+    x.second=-x.second;
+  }
+  return x;
+}
