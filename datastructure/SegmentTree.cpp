@@ -2,7 +2,7 @@
 using namespace std;
 template<typename T>
 vector<T> build_segtree(function<T(T,T)>f,T unit,const vector<T> &v){
-    long n=1;
+    size_t n=1;
     while(n<v.size()){n<<=1;}
     vector<T> tree(n<<1,unit);
     for(size_t i=0;i<v.size();++i)tree[n+i]=v[i];
@@ -14,7 +14,7 @@ vector<T> build_segtree(function<T(T,T)>f,T unit,const vector<T> &v){
 template <typename T>
 class segtree{
     using F = function<T(T,T)>;
-    long n;
+    size_t n;
     F f;
     T unit;
     vector<T> tree;
@@ -64,7 +64,7 @@ class segtree{
             b=n;
         }
         T vl=unit,vr=unit;
-        for(int l=a+n,r=b+n;l<r;l/=2,r/=2){
+        for(size_t l=a+n,r=b+n;l<r;l/=2,r/=2){
             if(l&1)vl=f(vl,tree[l++]);
             if(r&1)vr=f(tree[--r],vr);
         }

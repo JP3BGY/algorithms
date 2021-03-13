@@ -3,8 +3,8 @@
 #include<bits/stdc++.h>
 #include"egcd.cpp"
 #define MAX_N 100000
-using namespace std;
 long long cachedEulerPhi(long long n){
+  using namespace std;
   static long long lookup=0,p[MAX_N],f[MAX_N];
   if(!lookup){
     fill(p,p+MAX_N,1);
@@ -24,6 +24,7 @@ long long cachedEulerPhi(long long n){
 
 
 long long eulerPhi(long long n){
+  using namespace std;
   if(n==0)return 0;
   static map<long long,long long> cache;
   if(cache.count(n))return cache[n];
@@ -39,47 +40,93 @@ long long eulerPhi(long long n){
   return ans;
 }
 long long inverse(long long a,long long m){
-  static map<long long,long long> cache;
-  if(cache.count(a)>0){
-    return cache[a];
-  }
-  auto b=egcd(a,m);
-  if(std::get<0>(b)!=1)return 0;
-  cache[a]=(std::get<1>(b)<0)?std::get<1>(b)+m:std::get<1>(b);
-  return cache[a];
+  using namespace std;
+  assert(abs(gcd(a,m))==1LL);
+  assert(a!=0);
+  auto [val,da,dm]=egcd(a,m);
+  return (da%m+m)%m;
 }
-template<long long m>
 class Modulo{
-  long long a;
 public:
-  Modulo(){
+  long long a,m;
+  Modulo():m(1000000007LL),a(0){};
+  Modulo(long long m):m(m){
     a=0;
   }
-  Modulo(const long long b){
+  Modulo(const long long b,long long m):m(m){
     a=(b%m+m)%m;
   }
   Modulo(const Modulo& b){
-    a=b.a;
-  }
-  Modulo &operator = (const long long b){
-    a=(b%m+m)%m;
-    return *this;
+    this->a=b.a;
+    this->m=b.m;
   }
   Modulo &operator = (const Modulo& b){
     a=b.a;
     return *this;
   }
-  Modulo operator + (const Modulo<m> &b)const{
+  Modulo operator + (const Modulo &b)const{
+    assert(b.m==this->m);
     return {(a+b.a)%m};
   }
-  Modulo operator - (const Modulo<m> &b)const{
+  Modulo operator - (const Modulo &b)const{
+    assert(b.m==this->m);
     return {(a-b.a+m)%m};
   }
-  Modulo operator * (const Modulo<m> &b)const{
+  Modulo operator * (const Modulo &b)const{
+    assert(b.m==this->m);
     return {(a*b.a)%m};
   }
-  Modulo operator / (const Modulo<m> &b)const{
+  Modulo operator / (const Modulo &b)const{
+    assert(b.m==this->m);
     return {(a*inverse(b,m))%m};
+  }
+  Modulo operator += (const Modulo &b){
+    assert(b.m==this->m);
+    this->a=(a+b.a)%m;
+    return this->a;
+  }
+  Modulo operator -= (const Modulo &b){
+    assert(b.m==this->m);
+    this->a=(a-b.a+m)%m;
+    return this->a;
+  }
+  Modulo operator *= (const Modulo &b){
+    assert(b.m==this->m);
+    this->a=(a*b.a)%m;
+    return this->a;
+  }
+  Modulo operator /= (const Modulo &b){
+    assert(b.m==this->m);
+    this->a=(a*inverse(b,m))%m;
+    return this->a;
+  }
+  Modulo operator < (const Modulo &b)const{
+    assert(b.m==this->m);
+    return a<b.a;
+  }
+  Modulo operator > (const Modulo &b)const{
+    assert(b.m==this->m);
+    return a>b.a;
+  }
+  Modulo operator <= (const Modulo &b)const{
+    assert(b.m==this->m);
+    return a<=b.a;
+  }
+  Modulo operator >= (const Modulo &b)const{
+    assert(b.m==this->m);
+    return a>=b.a;
+  }
+  Modulo operator == (const Modulo &b)const{
+    assert(b.m==this->m);
+    return a==b.a;
+  }
+  Modulo operator != (const Modulo &b)const{
+    assert(b.m==this->m);
+    return a!=b.a;
+  }
+  Modulo &operator = (const long long b){
+    a=(b%m+m)%m;
+    return *this;
   }
   Modulo operator + (const long long b)const{
     return {(a+b)%m};
@@ -93,56 +140,40 @@ public:
   Modulo operator / (const long long b)const{
     return {(a*inverse(b%m,m))%m};
   }
-  Modulo operator += (const Modulo<m> &b){
-    this->a=(a+b.a)%m;
-    return {(a+b.a)%m};
-  }
-  Modulo operator -= (const Modulo<m> &b){
-    this->a=(a-b.a+m)%m;
-    return {(a-b.a+m)%m};
-  }
-  Modulo operator *= (const Modulo<m> &b){
-    this->a=(a*b.a)%m;
-    return {(a*b.a)%m};
-  }
-  Modulo operator /= (const Modulo<m> &b){
-    this->a=(a*inverse(b,m))%m;
-    return {(a*inverse(b,m))%m};
-  }
   Modulo operator += (const long long b){
     this->a=(a+b)%m;
-    return {(a+b)%m};
+    return this->a;
   }
   Modulo operator -= (const long long b){
     this->a=((a-b)%m+m)%m;
-    return {((a-b)%m+m)%m};
+    return this->a;
   }
   Modulo operator *= (const long long b){
     this->a=(a*b)%m;
-    return {(a*b)%m};
+    return this->a;
   }
   Modulo operator /= (const long long b){
     this->a=(a*inverse(b%m,m))%m;
-    return {(a*inverse(b%m,m))%m};
+    return this->a;
   }
-  Modulo operator < (const Modulo<m> &b)const{
-    return a<b.a;
+  Modulo operator == (long long b)const{
+    return a==(b%this->m);
   }
-  Modulo operator > (const Modulo<m> &b)const{
-    return a>b.a;
+  Modulo operator != (long long b)const{
+    return a!=(b%this->m);
   }
   operator long long() const{return a;}
 };
-template<long long m>
-std::ostream& operator<<(std::ostream& os,Modulo<m> a){
+std::ostream& operator<<(std::ostream& os,Modulo a){
+  using namespace std;
   os<<(long long)(a);
   return os;
 }
 
-template<long long m>
-Modulo<m> modpow(Modulo<m> a,long long b){
+Modulo modpow(Modulo a,long long b){
+  using namespace std;
   long long c;
-  long long mod_pow=eulerPhi(m);
+  long long mod_pow=eulerPhi(a.m);
   if(b>64){
     c=64%mod_pow;
     b=b%mod_pow;
@@ -154,7 +185,7 @@ Modulo<m> modpow(Modulo<m> a,long long b){
     c=b;
   }
   b=c;
-  Modulo<m> base=a,ans=Modulo<m>(1LL);
+  Modulo base=a,ans=Modulo(1LL);
   while(b){
     if(b&1){
       ans=ans*base;

@@ -1,4 +1,4 @@
-long long modpow(long long a,unsigned long long b,unsigned long long MOD){
+long long modpow(long long a,long long b,unsigned long long MOD){
   long long base=a,ans=(1LL);
   while(b){
     if(b&1){

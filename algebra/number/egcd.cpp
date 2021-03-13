@@ -8,6 +8,7 @@ int sgn(T val){
 }
 
 tuple<long long,long long,long long> egcd(long long a,long long b){
+  // (val,da,db) val==gcd(a,b) da*a+db*b=val
   if(a==0||b==0)return std::make_tuple(0LL,0LL,0LL);
   long long sa=sgn(a),sb=sgn(b);
   a=std::abs(a);b=std::abs(b);

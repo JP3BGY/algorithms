@@ -32,12 +32,6 @@ long long combination_prime(long long n,long long r,long long m){
 const long long max_cache=1000000;
 long long cache_fact[max_cache],cache_inv_fact[max_cache];
 long long combination_cached(long long n,long long r,long long m){
-  if(r<0||r>n)return 0;
-  if(r==0||r==n)return 1;
-  if(n>m){
-    std::cerr<<"Combination Error: n is greater than m"<<std::endl;
-    exit(1);
-  }
   static bool cached=false;
   if(cached==false){
     cached=true;
@@ -52,6 +46,12 @@ long long combination_cached(long long n,long long r,long long m){
     for (long long i = 1; i < max_cache; i++) {
       cache_fact[i]=cache_fact[i-1]*i%m;
     }
+  }
+  if(r<0||r>n)return 0;
+  if(r==0||r==n)return 1;
+  if(n>m){
+    std::cerr<<"Combination Error: n is greater than m"<<std::endl;
+    exit(1);
   }
   r=min(r,n-r);
   return cache_fact[n]*cache_inv_fact[r]%m*cache_inv_fact[n-r]%m;

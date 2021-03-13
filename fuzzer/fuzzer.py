@@ -7,7 +7,7 @@ rand_gen=random.SystemRandom()
 
 def gen_graph(v,e,is_directed=False):
     es=set()
-    while len(let) < e:
+    while len(es) < e:
         a=rand_gen.randrange(v)
         b=a
         while b==a:
