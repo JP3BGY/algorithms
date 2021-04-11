@@ -9,6 +9,7 @@ std::vector<long long> primes(long long a){
         {
             if(i%j==0){
                 flag=false;
+                break;
             }
         }
         if(flag){
@@ -18,6 +19,6 @@ std::vector<long long> primes(long long a){
             i--;
         }
     }
-    return move(ret);
+    return ret;
 }
 #endif
