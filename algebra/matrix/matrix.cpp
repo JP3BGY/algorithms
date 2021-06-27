@@ -4,13 +4,18 @@ template<class T>
 class Matrix{
   std::vector<std::vector<T>> mat;
 public:
-  Matrix(size_t n,size_t m,T x=0):mat(n,vector<T>(m,x)){
+  const long n,m;
+  Matrix(size_t n,size_t m,T x=0):n(n),m(m)mat(n,vector<T>(m,x)){
   }
   void init(size_t n,size_t m,T x=0){
     mat.assign(n,vector<T>(m,x));
   }
   size_t size()const {return mat.size();}
   inline vector<T>& operator [](size_t i){return mat[i];}
+  vector<vector<T>> operator*= (const Matrix<T>& x)const {
+    assert(x.n==m);
+    
+  }
 };
 template <class T>
 tuple<long long,vector<long long>> GaussJordan(Matrix<T> &A,bool is_extended = false){

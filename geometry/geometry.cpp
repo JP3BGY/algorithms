@@ -22,3 +22,40 @@ std::pair<long long,long long> direction(std::pair<long long,long long> x){
   }
   return x;
 }
+long long dist(std::pair<long long,long long> x,std::pair<long long,long long> y=pair<long long,long long>(0,0)){
+  using namespace std;
+  long long dx=abs(x.first-y.first),dy=abs(x.second-y.second);
+  return dx*dx+dy*dy;
+}
+long long dot(std::pair<long long,long long> x,std::pair<long long,long long> y){
+  using namespace std;
+  return x.first*y.first+x.second*y.second;
+}
+long long cross(std::pair<long long,long long> x,std::pair<long long,long long> y){
+  using namespace std;
+  return x.first*y.second-x.second*y.first;
+}
+bool atan2_cmp (std::pair<long long,long long> l,std::pair<long long,long long> r){
+	long double atl=atan2l((long double)l.second,(long double)l.first);
+	long double atr=atan2l((long double)r.second,(long double)r.first);
+	return (atl!=atr)?(atl<atr):((l.first*l.first+l.second*l.second)<(r.first*r.first+r.second*r.second));
+}
+bool arg_cmp (std::pair<long long,long long> x,std::pair<long long,long long> y){
+  // (-π,π]で、角度が大きい方がtrue（ソートすると前に来る）、角度が同じなら長さが長い方がtrue
+  using namespace std;
+  assert(!(x.first==0&&x.second==0));
+  assert(!(y.first==0&&y.second==0));
+  if(cross(x,y)==0&&dot(x,y)>0){
+    return dist(x)>dist(y);
+  }
+  if(x.second==0&&y.second==0){
+    return x.first<0;
+  }
+  if(x.second>=0&&y.second<0){
+    return true;
+  }
+  if(x.second<0&&y.second>=0){
+    return false;
+  }
+  return cross(x,y)<0;
+}

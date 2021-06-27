@@ -31,7 +31,7 @@ long long combination_prime(long long n,long long r,long long m){
 }
 const long long max_cache=1000000;
 long long cache_fact[max_cache],cache_inv_fact[max_cache];
-long long combination_cached(long long n,long long r,long long m){
+long long combination_cached(long long n,long long r,long long m=1000000007LL){
   static bool cached=false;
   if(cached==false){
     cached=true;

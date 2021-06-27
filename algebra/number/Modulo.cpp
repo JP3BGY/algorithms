@@ -22,36 +22,36 @@ long long cachedEulerPhi(long long n){
   return f[n];
 }
 
-
+#include"prime.cpp"
 long long eulerPhi(long long n){
   using namespace std;
   if(n==0)return 0;
   static map<long long,long long> cache;
   if(cache.count(n))return cache[n];
+  auto div=factor(n);
   long long ans=n;
-  for (long long i = 2; i*i <= n; i++) {
-    if(n%i==0){
-      ans-=ans/i;
-      while(n%i==0)n/=i;
+  for(int bits=1;bits<(1<<(long)div.size());++bits){
+    long long mul=1;
+    for(int j=0;j<div.size();++j){
+      if(bits>>j & 1)mul*=div[j].first;
     }
+    ans+= n/mul*(__builtin_popcount(bits)%2?-1,1);
   }
-  if(n>1)ans-=ans/n;
-  cache[n]=ans;
   return ans;
 }
 long long inverse(long long a,long long m){
   using namespace std;
   assert(abs(gcd(a,m))==1LL);
   assert(a!=0);
+  a%=m;
   auto [val,da,dm]=egcd(a,m);
   return (da%m+m)%m;
 }
 class Modulo{
 public:
-  long long a,m;
-  Modulo():m(1000000007LL),a(0){};
-  Modulo(long long m):m(m){
-    a=0;
+  long long a=0,m=1000000007LL;
+  Modulo(){};
+  Modulo(long long a):a(a){
   }
   Modulo(const long long b,long long m):m(m){
     a=(b%m+m)%m;
@@ -164,6 +164,22 @@ public:
   }
   operator long long() const{return a;}
 };
+Modulo operator + (const long long b,const Modulo x){
+  long long a=x.a,m=x.m;
+  return Modulo((a+b%m)%m,m);
+}
+Modulo operator - (const long long b,const Modulo x){
+  long long a=x.a,m=x.m;
+  return Modulo(((a-b)%m+m)%m,m);
+}
+Modulo operator * (const long long b,const Modulo x){
+  long long a=x.a,m=x.m;
+  return Modulo((a*b)%m,m);
+}
+Modulo operator / (const long long b,const Modulo x){
+  long long a=x.a,m=x.m;
+  return Modulo((a*inverse(b%m,m))%m,m);
+}
 std::ostream& operator<<(std::ostream& os,Modulo a){
   using namespace std;
   os<<(long long)(a);
