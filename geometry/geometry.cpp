@@ -22,7 +22,7 @@ std::pair<long long,long long> direction(std::pair<long long,long long> x){
   }
   return x;
 }
-long long dist(std::pair<long long,long long> x,std::pair<long long,long long> y=pair<long long,long long>(0,0)){
+long long dist(std::pair<long long,long long> x,std::pair<long long,long long> y=std::pair<long long,long long>(0,0)){
   using namespace std;
   long long dx=abs(x.first-y.first),dy=abs(x.second-y.second);
   return dx*dx+dy*dy;
